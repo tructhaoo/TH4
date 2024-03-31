@@ -1,0 +1,93 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Đóng góp ý kiến sản phẩm</title>
+    <link rel="stylesheet" href="bai3.css">
+    <script src="/TH2/BT2/bai3.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+</head>
+<body>
+    <h1>Bài 3</h1>
+    <div class="text1">
+        <h1>ĐÓNG GÓP Ý KIẾN VỀ SẢN PHẨM</h1>
+        <p>Góp ý của bạn sẽ được chúng tôi xem xét, vui lòng nhập Tiếng Việt có dấu</p>
+        <p>Các ý kiến đóng góp nên viết chi tiết rõ ràng, kèm theo minh chứng xác thực thời gian và địa điểm (nếu có)</p>
+    </div>
+    <div class="container">
+        <form id="feedbackForm" action="#" method="post">
+            <div class="column">
+                <div class="text">
+                    <div class="input-group">
+                        <input type="text" name="name" required placeholder="Họ và tên">
+                    </div>
+                    <div class="input-group">
+                        <input type="text" name="card" required placeholder="Mã thẻ">
+                    </div>
+                </div>
+                <div class="text">
+                    <div class="input-group">
+                        <input type="tel" name="phone" required placeholder="Số điện thoại">
+                    </div>
+                    <div class="input-group">
+                        <input type="email" name="email" required placeholder="E-mail">
+                    </div>
+                </div>
+                <div class="text">
+                    <div class="input-group">
+                        <select name="customer-type" required >
+                            <option value="">Chọn loại khách hàng</option>
+                            <option value="vip">VIP</option>
+                            <option value="regular">Regular</option>
+                            <option value="new">New</option>
+                        </select>
+                    </div>
+                    <div class="input-group">
+                        <input type="text" name="invoice" placeholder="Mã hóa đơn">
+                    </div>
+                </div>
+                <div class="text">
+                    <div class="input-group">
+                        <textarea name="description" placeholder="Nhập chi tiết mô tả"></textarea>
+                    </div>
+                </div>
+                <button type="button" class="nut" onclick="guiFeedback()">Gửi ý kiến <i class="bi bi-messenger"></i></button>
+            </div>
+        </form>
+    </div>
+    
+    <div class="result" id="result"></div>
+
+    <script>
+        function guiFeedback() {
+            // Lấy giá trị từ các trường input và textarea
+            var name = document.getElementsByName("name")[0].value;
+            var description = document.getElementsByName("description")[0].value;
+            
+            // Lấy ngày và giờ hiện tại
+            var today = new Date();
+            var dd = String(today.getDate()).padStart(2, '0');
+            var mm = String(today.getMonth() + 1).padStart(2, '0'); // Tháng bắt đầu từ 0
+            var yyyy = today.getFullYear();
+            var hour = String(today.getHours()).padStart(2, '0');
+            var minute = String(today.getMinutes()).padStart(2, '0');
+            var second = String(today.getSeconds()).padStart(2, '0');
+            today = hour + ':' + minute + ':' + second + ', ' + dd + '/' + mm + '/' + yyyy;
+
+            // Hiển thị thông tin ở dưới form
+           
+            var resultDiv = document.getElementById("result");
+    
+            resultDiv.innerHTML += 
+                "<p><strong>@</strong> " + name + "</p>" +
+                "<p> " + today + "</p>" +
+                "<p> " + description + "</p>"+
+            "<p> </p>" 
+           
+            // Reset form
+            document.getElementById("feedbackForm").reset();
+        }
+    </script>
+</body>
+</html>

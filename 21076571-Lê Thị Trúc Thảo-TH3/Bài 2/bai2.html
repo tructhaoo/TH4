@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Đồng Hồ</title>
+<link rel="stylesheet" href="bai2.css">
+<script src="bai2.js"></script>
+</head>
+<body>
+<h1>Bài 2</h1>
+<div class="clock">
+  <div class="time-clock">
+    <span class="hours">00</span> :
+    <span class="minutes">00</span> :
+    <span class="seconds">00</span>
+  </div>
+  <div class="ampm-clock">
+    <span class="ampm">AM</span>
+  </div>
+</div>
+
+
+<div class="countdown-container">
+  <div class="countdown">
+    <span class="countdown-label">Countdown:</span> 
+    <span class="countdown-timer">00:00:00</span>
+  </div>
+</div>
+<script > 
+    function updateClock() {
+      const now = new Date();
+      let hours = now.getHours();
+      const minutes = String(now.getMinutes()).padStart(2, '0');
+      const seconds = String(now.getSeconds()).padStart(2, '0');
+      const ampm = hours >= 12 ? 'PM' : 'AM';
+      hours = hours % 12;
+      hours = hours ? hours : 12; // Nếu hours là 0 thì hiển thị 12
+    
+      const hoursSpan = document.querySelector('.hours');
+      const minutesSpan = document.querySelector('.minutes');
+      const secondsSpan = document.querySelector('.seconds');
+      const ampmSpan = document.querySelector('.ampm');
+    
+      hoursSpan.textContent = String(hours).padStart(2, '0');
+      minutesSpan.textContent = minutes;
+      secondsSpan.textContent = seconds;
+      ampmSpan.textContent = ampm;
+    }
+    
+    updateClock();
+    setInterval(updateClock, 1000); // Update every second
+
+  // COUNTDOWN
+  function updateCountdown() {
+  const now = new Date();
+  const futureDate = new Date("2024-04-01T00:00:00"); // Thời gian cụ thể bạn muốn đếm ngược đến
+  const difference = futureDate - now;
+
+  if (difference <= 0) {
+    // Countdown đã kết thúc
+    document.querySelector('.countdown-timer').textContent = '00:00:00';
+    clearInterval(countdownInterval);
+    return;
+  }
+
+  const hours = String(Math.floor(difference / (1000 * 60 * 60))).padStart(2, '0');
+  const minutes = String(Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60))).padStart(2, '0');
+  const seconds = String(Math.floor((difference % (1000 * 60)) / 1000)).padStart(2, '0');
+
+  document.querySelector('.countdown-timer').textContent = `${hours}:${minutes}:${seconds}`;
+}
+
+updateCountdown();
+const countdownInterval = setInterval(updateCountdown, 1000); // Cập nhật mỗi giây
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,51 @@
+body {
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f0f0;
+   
+  }
+  
+  .clock {
+    font-family:'Times New Roman', Times, serif;
+    width:300px;
+    height:50px;
+    font-size: 48px;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color:rgb(255, 177, 233);
+    color:#f0f0f0;
+    text-align: center;
+  }
+  
+  .time-clock {
+    display: inline-flex;
+  }
+  
+  .ampm-clock {
+    display: inline-flex;
+    margin-left: 10px;
+  }
+  
+  /* Countdown */
+  .countdown-container {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 50px;
+    margin-top: 20px;
+    
+  }
+  
+  .countdown-label {
+    color: #58b5bc;
+    display: inline-flex;
+  }
+  
+  .countdown-timer {
+    color: #fff;
+    background-color: #ffbeea;
+    padding: 5px 25px;
+    border-radius: 5px;
+    display: inline-block;
+
+  }
